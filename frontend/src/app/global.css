@@ -1,0 +1,13 @@
+.swiper {
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.swiper .swiper-slide {
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.swiper-pagination-bullet-active {
+	background-color: rgba(255, 255, 255, 0.6) !important;
+}
