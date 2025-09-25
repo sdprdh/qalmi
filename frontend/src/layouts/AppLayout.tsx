@@ -1,19 +1,21 @@
 'use client';
 
-import BannerSkeleton from '@/components/banner/BannerSkeleton';
-import Navbar from '@/components/navbar';
-import SidebarMobile from '@/components/sidebar/SidebarMobile';
-import SidebarSkeleton from '@/components/sidebar/SidebarSkeleton';
+import { BannerSkeleton } from '@/components/banner';
+import { SidebarMobile, SidebarSkeleton } from '@/components/sidebar';
 import { Grid, GridItem, ScrollArea, Stack } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
 
-const Sidebar = dynamic(() => import('@/components/sidebar'), {
+const Navbar = dynamic(() => import('@/components/navbar').then((md) => md.Navbar), {
+	ssr: false,
+});
+
+const Sidebar = dynamic(() => import('@/components/sidebar').then((md) => md.Sidebar), {
 	ssr: false,
 	loading: SidebarSkeleton,
 });
 
-const Banner = dynamic(() => import('@/components/banner'), {
+const Banner = dynamic(() => import('@/components/banner').then((md) => md.Banner), {
 	ssr: false,
 	loading: BannerSkeleton,
 });

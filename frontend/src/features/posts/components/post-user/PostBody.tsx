@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const PostBody = () => {
-  return (
-    <div>PostBody</div>
-  )
-}
+	return <div>PostBody</div>;
+};
 
-export default PostBody
+export default PostBody;

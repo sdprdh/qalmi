@@ -1,9 +1,9 @@
 'use client';
 
-import { Button } from '@/components/ui';
+import { Button, ButtonProps } from '@/components/ui';
 import { useFormStatus } from 'react-dom';
 
-const FormButton = () => {
+const FormButtonSubmit = ({ children, ...props }: ButtonProps) => {
 	const { pending } = useFormStatus();
 
 	return (
@@ -12,10 +12,11 @@ const FormButton = () => {
 			type="submit"
 			rounded="md"
 			colorPalette="teal"
+			{...props}
 		>
-			Daftar
+			{children}
 		</Button>
 	);
 };
 
-export default FormButton;
+export default FormButtonSubmit;

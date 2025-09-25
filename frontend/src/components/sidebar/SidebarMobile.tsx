@@ -1,54 +1,23 @@
 'use client';
 
+import Backdrop from '@/components/Backdrop';
+import CloseButtonSidebar from '@/components/sidebar/CloseButtonSidebar';
 import SidebarSkeleton from '@/components/sidebar/SidebarSkeleton';
-import { CloseButton } from '@/components/ui';
-import { useSidebarContext } from '@/hooks/useSidebarContext';
+import { useSidebarStore } from '@/stores/useSidebarStore';
 import { Stack } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
+import { useShallow } from 'zustand/shallow';
 
-const Sidebar = dynamic(() => import('@/components/sidebar'), {
+const Sidebar = dynamic(() => import('@/components/sidebar').then((md) => md.Sidebar), {
 	ssr: false,
 	loading: SidebarSkeleton,
 });
 
 const SidebarMobile = () => {
-	const { state, dispatch } = useSidebarContext();
+	const [isOpen, close] = useSidebarStore(useShallow((state) => [state.isOpen, state.close]));
 
 	return (
 		<>
-			{/* backdrop */}
-			<Stack
-				w="full"
-				h="full"
-				position="fixed"
-				top={0}
-				left={0}
-				bottom={0}
-				right={0}
-				bg="blackAlpha.500"
-				backdropFilter="blur(6px)"
-				zIndex={100}
-				hideFrom="lg"
-				transition="all"
-				transitionDuration="revert-layer"
-				transform={state.open ? 'translateX(0)' : 'translateX(-100%)'}
-				onClick={() => dispatch({ type: 'TOGGLE' })}
-			/>
-
-			<CloseButton
-				hideFrom="lg"
-				rounded="full"
-				position="fixed"
-				top={3}
-				right={3}
-				zIndex={105}
-				transform={state.open ? 'translateX(4px)' : 'translateX(200%)'}
-				variant="subtle"
-				size="xs"
-				onClick={() => dispatch({ type: 'TOGGLE' })}
-			/>
-
-			{/* sidebar */}
 			<Stack
 				w={{ base: '210px', md: '300px' }}
 				h="100vh"
@@ -63,10 +32,20 @@ const SidebarMobile = () => {
 				animationDirection="reverse"
 				transitionDuration="slower"
 				anchorName="bounce, fade-in"
-				transform={state.open ? 'translateX(0)' : 'translateX(-100%)'}
+				transform={isOpen ? 'translateX(0)' : 'translateX(-100%)'}
 			>
 				<Sidebar />
 			</Stack>
+
+			<Backdrop
+				isVisible={isOpen}
+				onClick={close}
+			/>
+
+			<CloseButtonSidebar
+				isOpen={isOpen}
+				onClick={close}
+			/>
 		</>
 	);
 };

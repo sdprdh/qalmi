@@ -23,7 +23,6 @@ export const signupAction = async (prevState: any, formData: FormData) => {
 		const response = await instance.post('/auth/signup', request.data);
 		console.log(response);
 		console.log('okkkkk');
-		
 
 		redirect('/auth/signin/verification');
 	} catch (error) {

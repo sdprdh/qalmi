@@ -1,4 +1,5 @@
-import { Center, Skeleton, SkeletonText, Stack } from '@chakra-ui/react';
+import { Skeleton, SkeletonText } from '@/components/ui';
+import { Center, Stack } from '@chakra-ui/react';
 
 const Loading = () => {
 	return (

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const PostMedia = () => {
-  return (
-    <div>PostMedia</div>
-  )
-}
+	return <div>PostMedia</div>;
+};
 
-export default PostMedia
+export default PostMedia;

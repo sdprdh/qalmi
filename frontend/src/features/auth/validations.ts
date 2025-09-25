@@ -22,5 +22,5 @@ export const signupSchema = z
 			.max(100, { error: 'Password maksimal 100 karakter' }),
 	})
 	.strict();
-	
+
 export type SignupSchema = z.infer<typeof signupSchema>;

@@ -10,3 +10,4 @@ export * from './toaster';
 export * from './tooltip';
 export * from './checkbox';
 export * from './close-button';
+export * from './skeleton';

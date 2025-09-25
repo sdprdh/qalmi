@@ -1,4 +1,5 @@
-import { For, ScrollArea, Skeleton, SkeletonText, Stack } from '@chakra-ui/react';
+import { Skeleton, SkeletonText } from '@/components/ui';
+import { For, ScrollArea, Stack } from '@chakra-ui/react';
 
 const SidebarSkeleton = () => {
 	return (

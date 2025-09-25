@@ -1,7 +1,7 @@
 import { Heading, HeadingProps, HStack } from '@chakra-ui/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { memo } from "react";
+import { memo } from 'react';
 
 const Logo = ({ ...props }: HeadingProps) => {
 	return (

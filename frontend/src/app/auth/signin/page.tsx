@@ -1,21 +1,17 @@
-import { Heading, Stack, Text } from '@chakra-ui/react';
+import { FormAuth } from '@/features/auth/components';
 import dynamic from 'next/dynamic';
-const FormSignin = dynamic(() => import('@/features/auth/components/FormSignin'));
+const FormSignin = dynamic(() => import('@/features/auth/components').then((md) => md.FormSignin));
 
 const Page = () => {
 	return (
-		<Stack>
-			<Heading size="md">Masuk ke akun Anda</Heading>
-			<Text
-				fontSize="sm"
-				color="gray.500"
-				mb={2}
-			>
-				Senang melihatmu lagi! Masuk untuk melanjutkan ke aplikasi Qalmi.
-			</Text>
-
+		<FormAuth
+			header={{
+				title: 'Masuk ke akun Anda',
+				description: 'Senang melihatmu lagi! Masuk untuk melanjutkan ke aplikasi Qalmi.',
+			}}
+		>
 			<FormSignin />
-		</Stack>
+		</FormAuth>
 	);
 };
 

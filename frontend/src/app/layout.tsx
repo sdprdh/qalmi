@@ -1,8 +1,11 @@
 import AppLayout from '@/layouts/AppLayout';
-import { ChakraProvider, SidebarProvider, TanstackProvider } from '@/providers';
 import type { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import { Inter, Lobster } from 'next/font/google';
 import './global.css';
+
+const ChakraProvider = dynamic(() => import('@/providers').then((md) => md.ChakraProvider));
+const TanstackProvider = dynamic(() => import('@/providers').then((md) => md.TanstackProvider));
 
 const inter = Inter({
 	variable: '--font-inter',
@@ -33,9 +36,7 @@ const Layout = ({
 			<body className={` ${inter.variable} ${lobster.variable}`}>
 				<ChakraProvider>
 					<TanstackProvider>
-						<SidebarProvider>
-							<AppLayout>{children}</AppLayout>
-						</SidebarProvider>
+						<AppLayout>{children}</AppLayout>
 					</TanstackProvider>
 				</ChakraProvider>
 			</body>

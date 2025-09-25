@@ -1,5 +1,8 @@
-export type SignupRequest = {
-	name: string;
-	email: string;
-	password: string;
+// form
+export type FormAuthProps = {
+	header?: {
+		title?: string;
+		description?: string | React.ReactNode;
+	};
+	children: React.ReactNode;
 };

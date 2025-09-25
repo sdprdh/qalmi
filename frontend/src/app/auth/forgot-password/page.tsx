@@ -1,21 +1,24 @@
-import { Heading, Stack, Text } from '@chakra-ui/react';
+import { FormAuth } from '@/features/auth/components';
 import dynamic from 'next/dynamic';
-const FormForgotPassword = dynamic(() => import('@/features/auth/components/FormForgotPassword'));
+const FormForgotPassword = dynamic(() =>
+	import('@/features/auth/components').then((md) => md.FormForgotPassword),
+);
 
 const Page = () => {
 	return (
-		<Stack>
-			<Heading size="md">Lupa Password</Heading>
-			<Text
-				fontSize="sm"
-				color="gray.500"
-				mb={2}
-			>
-				Masukkan email, phone atau username Anda, dan kami akan mengirimkan{' '}
-				<strong>OTP</strong> untuk mereset password.
-			</Text>
+		<FormAuth
+			header={{
+				title: 'Lupa Password',
+				description: (
+					<>
+						Masukkan email, phone atau username Anda, dan kami akan mengirimkan{' '}
+						<strong>OTP</strong> untuk mereset password.
+					</>
+				),
+			}}
+		>
 			<FormForgotPassword />
-		</Stack>
+		</FormAuth>
 	);
 };
 

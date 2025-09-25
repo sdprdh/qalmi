@@ -1,47 +1,31 @@
-import { Button, Field, InputGroup } from '@/components/ui';
-import { Input, Stack, Text } from '@chakra-ui/react';
+import { Form, FormButtonSubmit, FormInput } from '@/components/form';
+import { Text } from '@chakra-ui/react';
 import Link from 'next/link';
-import { memo } from 'react';
 import { FiUser } from 'react-icons/fi';
 
 const FormForgotPassword = () => {
 	return (
-		<form>
-			<Stack spaceY="2">
-				<Field
-					invalid
-					errorText="This field is required"
-				>
-					<InputGroup startElement={<FiUser />}>
-						<Input
-							rounded="md"
-							placeholder="Email, phone atau Username"
-						/>
-					</InputGroup>
-				</Field>
+		<Form>
+			<FormInput
+				groupProps={{ startElement: <FiUser /> }}
+				inputProps={{ name: 'identifier', placeholder: 'Email, No hp atau Username' }}
+			/>
 
-				<Button
-					type="submit"
-					rounded="md"
-					colorPalette="teal"
-				>
-					Minta OTP
-				</Button>
+			<FormButtonSubmit>Minta OTP</FormButtonSubmit>
 
-				<Text
-					textStyle="xs"
-					textAlign="center"
+			<Text
+				textStyle="xs"
+				textAlign="center"
+			>
+				Sudah ingat akun?{' '}
+				<Link
+					href="/auth/signin"
+					style={{ color: 'teal' }}
 				>
-					Sudah ingat akun?{' '}
-					<Link
-						href="/auth/signin"
-						style={{ color: 'teal' }}
-					>
-						Masuk
-					</Link>
-				</Text>
-			</Stack>
-		</form>
+					Masuk
+				</Link>
+			</Text>
+		</Form>
 	);
 };
 

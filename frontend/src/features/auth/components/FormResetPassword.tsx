@@ -1,39 +1,37 @@
-import { Stack } from '@chakra-ui/react';
+import { Form, FormButtonSubmit, FormInputPassword } from '@/components/form';
+import { Text } from '@chakra-ui/react';
+import Link from 'next/link';
 import { FiLock } from 'react-icons/fi';
-import { Button, Field, InputGroup, PasswordInput } from '@/components/ui';
 
-const FormResetPassword = () => {
+const FormSignin = () => {
 	return (
-		<form>
-			<Stack spaceY="2">
-				<Field invalid>
-					<InputGroup startElement={<FiLock />}>
-						<PasswordInput
-							rounded="md"
-							placeholder="Password"
-						/>
-					</InputGroup>
-				</Field>
+		<Form>
+			<FormInputPassword
+				groupProps={{ startElement: <FiLock /> }}
+				inputProps={{ name: 'password', placeholder: 'Password' }}
+			/>
 
-				<Field invalid>
-					<InputGroup startElement={<FiLock />}>
-						<PasswordInput
-							rounded="md"
-							placeholder="Konfirmasi password"
-						/>
-					</InputGroup>
-				</Field>
+			<FormInputPassword
+				groupProps={{ startElement: <FiLock /> }}
+				inputProps={{ name: 'confirmPassword', placeholder: 'Konfirmasi Password' }}
+			/>
 
-				<Button
-					type="submit"
-					rounded="md"
-					colorPalette="teal"
+			<FormButtonSubmit>Konfirmasi</FormButtonSubmit>
+
+			<Text
+				textStyle="xs"
+				textAlign="center"
+			>
+				Sudah ingat akun?{' '}
+				<Link
+					href="/auth/signin"
+					style={{ color: 'teal' }}
 				>
-					Konfirmasi
-				</Button>
-			</Stack>
-		</form>
+					Masuk
+				</Link>
+			</Text>
+		</Form>
 	);
 };
 
-export default FormResetPassword;
+export default FormSignin;
